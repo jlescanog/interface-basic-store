@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - ElectroTienda</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        .enlaces-nav {
+            display: flex;
+            list-style: none;
+        }
+        
+        .enlaces-nav li {
+            margin-left: 1.5rem;
+        }
+        
+        .enlaces-nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .enlaces-nav a:hover,
+        .enlaces-nav a.activo {
+            color: #3498db;
+        }
+        
+        .icono-carrito {
+            position: relative;
+        }
+        
+        .contador-carrito {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        
+        .cabecera-pagina {
+            background-color: #3498db;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .cabecera-pagina h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contenedor-principal {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .carrito-vacio {
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .carrito-vacio img {
+            max-width: 150px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .carrito-vacio h2 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .carrito-vacio p {
+            margin-bottom: 2rem;
+            color: #7f8c8d;
+        }
+        
+        .boton {
+            padding: 0.8rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        
+        .boton:hover {
+            background-color: #2980b9;
+        }
+        
+        .boton-secundario {
+            background-color: #95a5a6;
+        }
+        
+        .boton-secundario:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .boton-eliminar {
+            background-color: #e74c3c;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .boton-eliminar:hover {
+            background-color: #c0392b;
+        }
+        
+        .tabla-carrito {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        
+        .tabla-carrito th {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tabla-carrito td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            vertical-align: middle;
+        }
+        
+        .producto-carrito {
+            display: flex;
+            align-items: center;
+        }
+        
+        .imagen-producto-carrito {
+            width: 80px;
+            height: 80px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .imagen-producto-carrito img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .detalles-producto {
+            flex: 1;
+        }
+        
+        .nombre-producto {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .categoria-producto {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .cantidad-producto {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .control-cantidad {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .btn-cantidad {
+            background-color: #f9f9f9;
+            border: none;
+            width: 30px;
+            height: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .input-cantidad {
+            width: 40px;
+            height: 30px;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .precio-producto, .subtotal-producto {
+            font-weight: bold;
+        }
+        
+        .botones-carrito {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .resumen-carrito {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .resumen-carrito h2 {
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .linea-resumen {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .linea-resumen:last-of-type {
+            border-bottom: none;
+        }
+        
+        .total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .contenedor-checkout {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .datos-envio {
+            flex: 2;
+        }
+        
+        .panel-resumen {
+            flex: 1;
+        }
+        
+        .metodos-pago {
+            margin-top: 2rem;
+        }
+        
+        .grupo-formulario {
+            margin-bottom: 1.5rem;
+        }
+        
+        .grupo-formulario label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .grupo-formulario input,
+        .grupo-formulario select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .fila-formulario {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .fila-formulario .grupo-formulario {
+            flex: 1;
+        }
+        
+        .titulo-seccion {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .cupones {
+            margin: 2rem 0;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .form-cupon {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .form-cupon input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .contenido-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .seccion-footer h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .seccion-footer ul {
+            list-style: none;
+        }
+        
+        .seccion-footer ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .seccion-footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .seccion-footer a:hover {
+            color: #3498db;
+        }
+        
+        .copyright {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Electro<span>Tienda</span></div>
+            <ul class="enlaces-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li class="icono-carrito">
+                    <a href="carrito.html" class="activo">🛒</a>
+                    <span class="contador-carrito">3</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="cabecera-pagina">
+        <h1>Carrito de Compras</h1>
+        <p>Revisa tus productos seleccionados antes de finalizar tu compra</p>
+    </div>
+
+    <div class="contenedor-principal">
+        <!-- Tabla de productos en el carrito -->
+        <table class="tabla-carrito">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="producto-carrito">
+                            <div class="imagen-producto-carrito">
+                                <img src="https://via.placeholder.com/80" alt="Teléfono X">
+                            </div>
+                            <div class="detalles-producto">
+                                <div class="nombre-producto">Teléfono X</div>
+                                <div class="categoria-producto">Teléfonos</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="precio-producto">$599.99</td>
+                    <td>
+                        <div class="cantidad-producto">
+                            <div class="control-cantidad">
+                                <button class="btn-cantidad">-</button>
+                                <input type="number" class="input-cantidad" value="1" min="1" max="10">
+                                <button class="btn-cantidad">+</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="subtotal-producto">$599.99</td>
+                    <td><button class="boton boton-eliminar">Eliminar</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="producto-carrito">
+                            <div class="imagen-producto-carrito">
+                                <img src="https://via.placeholder.com/80" alt="Audífonos Inalámbricos">
+                            </div>
+                            <div class="detalles-producto">
+                                <div class="nombre-producto">Audífonos Inalámbricos</div>
+                                <div class="categoria-producto">Audífonos</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="precio-producto">$199.99</td>
+                    <td>
+                        <div class="cantidad-producto">
+                            <div class="control-cantidad">
+                                <button class="btn-cantidad">-</button>
+                                <input type="number" class="input-cantidad" value="1" min="1" max="10">
+                                <button class="btn-cantidad">+</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="subtotal-producto">$199.99</td>
+                    <td><button class="boton boton-eliminar">Eliminar</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="producto-carrito">
+                            <div class="imagen-producto-carrito">
+                                <img src="https://via.placeholder.com/80" alt="Cargador Rápido">
+                            </div>
+                            <div class="detalles-producto">
+                                <div class="nombre-producto">Cargador Rápido</div>
+                                <div class="categoria-producto">Accesorios</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="precio-producto">$39.99</td>
+                    <td>
+                        <div class="cantidad-producto">
+                            <div class="control-cantidad">
+                                <button class="btn-

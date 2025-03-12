@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - ElectroTienda</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        .enlaces-nav {
+            display: flex;
+            list-style: none;
+        }
+        
+        .enlaces-nav li {
+            margin-left: 1.5rem;
+        }
+        
+        .enlaces-nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .enlaces-nav a:hover,
+        .enlaces-nav a.activo {
+            color: #3498db;
+        }
+        
+        .icono-carrito {
+            position: relative;
+        }
+        
+        .contador-carrito {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        
+        .cabecera-pagina {
+            background-color: #3498db;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .cabecera-pagina h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contenedor-principal {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .filtros {
+            flex: 1;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        
+        .filtros h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .grupo-filtro {
+            margin-bottom: 1.5rem;
+        }
+        
+        .grupo-filtro h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        
+        .opcion-filtro {
+            margin-bottom: 0.5rem;
+        }
+        
+        .opcion-filtro label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .opcion-filtro input {
+            margin-right: 0.5rem;
+        }
+        
+        .filtro-precio {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .filtro-precio input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .boton {
+            padding: 0.8rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        
+        .boton:hover {
+            background-color: #2980b9;
+        }
+        
+        .boton-filtro {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .productos {
+            flex: 3;
+        }
+        
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .resultados {
+            font-size: 1.1rem;
+        }
+        
+        .ordenar select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .cuadricula-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tarjeta-producto {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .tarjeta-producto:hover {
+            transform: translateY(-5px);
+        }
+        
+        .img-producto {
+            height: 200px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .img-producto img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .info-producto {
+            padding: 1.5rem;
+        }
+        
+        .info-producto h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .categoria {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .precio {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        .calificacion {
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+        }
+        
+        .acciones {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .etiqueta {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 0.3rem 0.6rem;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 4px;
+        }
+        
+        .paginacion {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .paginacion a {
+            padding: 0.5rem 1rem;
+            margin: 0 0.3rem;
+            border: 1px solid #ddd;
+            color: #3498db;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .paginacion a:hover,
+        .paginacion a.activo {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .contenido-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .seccion-footer h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .seccion-footer ul {
+            list-style: none;
+        }
+        
+        .seccion-footer ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .seccion-footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .seccion-footer a:hover {
+            color: #3498db;
+        }
+        
+        .copyright {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Electro<span>Tienda</span></div>
+            <ul class="enlaces-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html" class="activo">Productos</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li class="icono-carrito">
+                    <a href="carrito.html">🛒</a>
+                    <span class="contador-carrito">0</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="cabecera-pagina">
+        <h1>Nuestros Productos</h1>
+        <p>Descubre nuestra amplia gama de productos electrónicos de alta calidad</p>
+    </div>
+
+    <div class="contenedor-principal">
+        <aside class="filtros">
+            <h2>Filtros</h2>
+            <div class="grupo-filtro">
+                <h3>Categorías</h3>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="smartphones">
+                        Teléfonos Inteligentes
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="laptops">
+                        Portátiles
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="tablets">
+                        Tablets
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="audifonos">
+                        Audífonos
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="accesorios">
+                        Accesorios
+                    </label>
+                </div>
+            </div>
+            <div class="grupo-filtro">
+                <h3>Precio</h3>
+                <div class="filtro-precio">
+                    <input type="number" placeholder="Mínimo" min="0">
+                    <input type="number" placeholder="Máximo" min="0">
+                </div>
+            </div>
+            <div class="grupo-filtro">
+                <h3>Marca</h3>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="apple">
+                        Apple
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="samsung">
+                        Samsung
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="xiaomi">
+                        Xiaomi
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="sony">
+                        Sony
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="dell">
+                        Dell
+                    </label>
+                </div>
+            </div>
+            <div class="grupo-filtro">
+                <h3>Disponibilidad</h3>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="disponibilidad" value="en-stock">
+                        En stock
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="disponibilidad" value="oferta">
+                        En oferta
+                    </label>
+                </div>
+            </div>
+            <button class="boton boton-filtro">Aplicar Filtros</button>
+        </aside>
+
+        <main class="productos">
+            <div class="barra-superior">
+                <div class="resultados">
+                    Mostrando 1-12 de 36 productos
+                </div>
+                <div class="ordenar">
+                    <select>
+                        <option value="relevancia">Relevancia</option>
+                        <option value="precio-asc">Precio: Menor a Mayor</option>
+                        <option value="precio-desc">Precio: Mayor a Menor</option>
+                        <option value="nombre-asc">Nombre: A-Z</option>
+                        <option value="nombre-desc">Nombre: Z-A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="cuadricula-productos">
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="Teléfono XS">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Teléfonos</span>
+                        <h3>Teléfono XS</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Pantalla 6.5", 128GB, 8GB RAM</p>
+                        <div class="precio">$599.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="Portátil Pro">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria
