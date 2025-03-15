@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Rania's Pasteleria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                Rania's <span>Pasteleria</span>
+            </div>
+            <ul class="enlaces-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li class="icono-carrito">
+                    <a href="carrito.html" class="activo">🛒</a>
+                    <span class="contador-carrito">3</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="cabecera-pagina">
+        <h1>Carrito de Compras</h1>
+        <p>Revisa tus productos seleccionados antes de finalizar tu compra</p>
+    </div>
+
+    <div class="contenedor-principal">
+        <!-- Tabla de productos en el carrito -->
+        <table class="tabla-carrito">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="producto-carrito">
+                            <div class="imagen-producto-carrito">
+                                <img src="https://via.placeholder.com/80" alt="Bocaditos - Dulces">
+                            </div>
+                            <div class="detalles-producto">
+                                <div class="nombre-producto">Bocaditos - Dulces</div>
+                                <div class="categoria-producto">Postres</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="precio-producto">$19.99</td>
+                    <td>
+                        <div class="cantidad-producto">
+                            <div class="control-cantidad">
+                                <button class="btn-cantidad">-</button>
+                                <input type="number" class="input-cantidad" value="1" min="1" max="10">
+                                <button class="btn-cantidad">+</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="subtotal-producto">$19.99</td>
+                    <td><button class="boton boton-eliminar">Eliminar</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="producto-carrito">
+                            <div class="imagen-producto-carrito">
+                                <img src="https://via.placeholder.com/80" alt="Audífonos Inalámbricos">
+                            </div>
+                            <div class="detalles-producto">
+                                <div class="nombre-producto">Keke de Vainilla</div>
+                                <div class="categoria-producto">Postres</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="precio-producto">$10.99</td>
+                    <td>
+                        <div class="cantidad-producto">
+                            <div class="control-cantidad">
+                                <button class="btn-cantidad">-</button>
+                                <input type="number" class="input-cantidad" value="1" min="1" max="10">
+                                <button class="btn-cantidad">+</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="subtotal-producto">$10.99</td>
+                    <td><button class="boton boton-eliminar">Eliminar</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="producto-carrito">
+                            <div class="imagen-producto-carrito">
+                                <img src="https://via.placeholder.com/80" alt="Keke de Vainilla">
+                            </div>
+                            <div class="detalles-producto">
+                                <div class="nombre-producto">Keke de Vainilla</div>
+                                <div class="categoria-producto">Postres</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="precio-producto">$10.99</td>
+                    <td>
+                        <div class="cantidad-producto">
+                            <div class="control-cantidad">
+                                <button class="btn-cantidad">-</button>
+                                <input type="number" class="input-cantidad" value="1" min="1" max="10">
+                                <button class="btn-cantidad">+</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="subtotal-producto">$10.99</td>
+                    <td><button class="boton boton-eliminar">Eliminar</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="producto-carrito">
+                            <div class="imagen-producto-carrito">
+                                <img src="https://via.placeholder.com/80" alt="Keke de Chocolate">
+                            </div>
+                            <div class="detalles-producto">
+                                <div class="nombre-producto">Keke de Chocolate</div>
+                                <div class="categoria-producto">Postres</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="precio-producto">$14.99</td>
+                    <td>
+                        <div class="cantidad-producto">
+                            <div class="control-cantidad">
+                                <button class="btn-cantidad">-</button>
+                                <input type="number" class="input-cantidad" value="1" min="1" max="10">
+                                <button class="btn-cantidad">+</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="subtotal-producto">$14.99</td>
+                    <td><button class="boton boton-eliminar">Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <div class="contenido-footer">
+            <div class="seccion-footer">
+                <h3>Acerca de nosotros</h3>
+                <ul>
+                    <li><a href="#">Nuestra historia</a></li>
+                    <li><a href="#">Misión y visión</a></li>
+                    <li><a href="#">Equipo de trabajo</a></li>
+                </ul>
+            </div>
+            <div class="seccion-footer">
+                <h3>Atención al cliente</h3>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                </ul>
+            </div>
+            <div class="seccion-footer">
+                <h3>Redes sociales</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Rania's Pasteleria. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

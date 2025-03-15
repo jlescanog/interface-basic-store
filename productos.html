@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Rania's Pasteleria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                Rania's <span>Pasteleria</span>
+            </div>
+            <ul class="enlaces-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html" class="activo">Productos</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li class="icono-carrito">
+                    <a href="carrito.html">🛒</a>
+                    <span class="contador-carrito">0</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Cabecera de la página -->
+    <div class="cabecera-pagina">
+        <h1>Nuestros Productos</h1>
+        <p>Descubre nuestra variedad de postres con recetas caseras</p>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="contenedor-principal">
+        <aside class="filtros">
+            <h2>Filtros</h2>
+            <div class="grupo-filtro">
+                <h3>Categorías</h3>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="postres">
+                        Postres
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="postres">
+                        Postres
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="postres">
+                        Postres
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="categoria" value="postres">
+                        Postres
+                    </label>
+                </div>
+            </div>
+            <div class="grupo-filtro">
+                <h3>Precio</h3>
+                <div class="filtro-precio">
+                    <input type="number" placeholder="Mínimo" min="0">
+                    <input type="number" placeholder="Máximo" min="0">
+                </div>
+            </div>
+            <div class="grupo-filtro">
+                <h3>Marca</h3>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="salados">
+                        Salados
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="dulces">
+                        Dulces
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="dulces-salados">
+                        Dulces & Salados
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="cynammon">
+                        Cynammon
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="marca" value="vladi">
+                        Vladi
+                    </label>
+                </div>
+            </div>
+            <div class="grupo-filtro">
+                <h3>Disponibilidad</h3>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="disponibilidad" value="en-stock">
+                        En stock
+                    </label>
+                </div>
+                <div class="opcion-filtro">
+                    <label>
+                        <input type="checkbox" name="disponibilidad" value="oferta">
+                        En oferta
+                    </label>
+                </div>
+            </div>
+            <button class="boton boton-filtro">Aplicar Filtros</button>
+        </aside>
+
+        <!-- Productos -->
+        <main class="productos">
+            <div class="barra-superior">
+                <div class="resultados">
+                    Mostrando 1-12 de 36 productos
+                </div>
+                <div class="ordenar">
+                    <select>
+                        <option value="relevancia">Relevancia</option>
+                        <option value="precio-asc">Precio: Menor a Mayor</option>
+                        <option value="precio-desc">Precio: Mayor a Menor</option>
+                        <option value="nombre-asc">Nombre: A-Z</option>
+                        <option value="nombre-desc">Nombre: Z-A</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Cuadricula - Productos -->
+            <div class="cuadricula-productos">
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="keke de vainilla">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Postres</span>
+                        <h3>Keke de vainilla</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Keke de vainilla, 500g, 10 tajadas</p>
+                        <div class="precio">$10.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="keke de vainilla">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Postres</span>
+                        <h3>Keke de vainilla</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Keke de vainilla, 500g, 10 tajadas</p>
+                        <div class="precio">$10.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="keke de vainilla">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Postres</span>
+                        <h3>Keke de vainilla</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Keke de vainilla, 500g, 10 tajadas</p>
+                        <div class="precio">$10.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="keke de vainilla">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Postres</span>
+                        <h3>Keke de vainilla</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Keke de vainilla, 500g, 10 tajadas</p>
+                        <div class="precio">$10.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="keke de vainilla">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Postres</span>
+                        <h3>Keke de vainilla</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Keke de vainilla, 500g, 10 tajadas</p>
+                        <div class="precio">$10.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="Bocaditos - Salados">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Bocaditos</span>
+                        <h3>Bocaditos - Salados</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Bocaditos - Salados, 100g</p>
+                        <div class="precio">$19.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="keke de vainilla">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Postres</span>
+                        <h3>Keke de vainilla</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Keke de vainilla, 500g, 10 tajadas</p>
+                        <div class="precio">$10.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="Bocaditos - Dulces">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Bocaditos - Dulces</span>
+                        <h3>Bocaditos - Dulces</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Bocaditos - Dulces, 100g</p>
+                        <div class="precio">$19.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="Keke - Cholocale">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Postres</span>
+                        <h3>Keke - Cholocale</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Keke - Cholocale, 500g, 10 tajadas</p>
+                        <div class="precio">$14.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="img-producto">
+                        <img src="https://via.placeholder.com/150" alt="Keke - Cholocale">
+                    </div>
+                    <div class="info-producto">
+                        <span class="categoria">Postres</span>
+                        <h3>Keke - Cholocale</h3>
+                        <div class="calificacion">★★★★☆</div>
+                        <p>Keke - Cholocale, 500g, 10 tajadas</p>
+                        <div class="precio">$14.99</div>
+                        <div class="acciones">
+                            <a href="#" class="boton">Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Paginacion -->
+            <div class="paginacion">
+                <a href="#" class="activo">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">›</a>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="contenido-footer">
+            <div class="seccion-footer">
+                <h3>Acerca de nosotros</h3>
+                <ul>
+                    <li><a href="#">Nuestra historia</a></li>
+                    <li><a href="#">Misión y visión</a></li>
+                    <li><a href="#">Equipo de trabajo</a></li>
+                </ul>
+            </div>
+            <div class="seccion-footer">
+                <h3>Atención al cliente</h3>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Política de devoluciones</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="seccion-footer">
+                <h3>Redes sociales</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="seccion-footer">
+                <h3>Newsletter</h3>
+                <p>Registra tu correo electrónico para recibir noticias y promociones exclusivas.</p>
+                <form>
+                    <input type="email" placeholder="Correo electrónico">
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Rania's Pasteleria. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
